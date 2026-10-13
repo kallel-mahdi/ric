@@ -1,0 +1,15 @@
+# @package _global_
+# Table 2's tuning grid: optimizer x learning rate x activation.
+# "sgd_paper" is this repo's name for SGD with momentum 0.9 and the paper's
+# step schedule. Combine with any experiment preset and dataset:
+#   ric-train-sl -m +experiment=sl_adamw +sweep=hparam_grid dataset=cifar10
+hydra:
+  mode: MULTIRUN
+  sweep:
+    subdir: ${dataset.name}/${algorithm.optimizer}/lr_${algorithm.learning_rate}/${algorithm.activation}/seed_${seed}
+  sweeper:
+    params:
+      algorithm.optimizer: adamw, sgd_paper
+      algorithm.learning_rate: 3.0e-4, 1.0e-1
+      algorithm.activation: relu, silu
+      algorithm.train_batch_size: 256

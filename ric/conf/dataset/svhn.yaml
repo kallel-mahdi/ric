@@ -1,0 +1,29 @@
+# SVHN dataset configuration
+
+name: svhn
+num_classes: 10
+image_size: 32
+
+# Split the official train split into train/val; keep the official test split.
+train_test_split: 0.9
+
+data_path: ${data_dir}
+download: true
+
+dataset_fraction: 1.0
+
+normalization: cifar
+augmentation: true
+
+# Training budget and resources for this dataset. Experiment presets read these
+# by interpolation, so one preset covers every dataset instead of one file each.
+supervised_epochs: 300
+rl_policy_epochs: 400
+walltime_min:
+  rl: 900
+  sl: 240
+  edl: 240
+  adaptive: 240
+mem_gb: 32
+
+encoder_arch: cifarresnet34

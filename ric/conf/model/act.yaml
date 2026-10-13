@@ -1,0 +1,9 @@
+name: act
+
+activation: silu
+gru_hidden_size: auto
+max_steps: 20
+halt_bias: 1.0
+
+act_epsilon: 0.01
+ponder_weight: 0.01

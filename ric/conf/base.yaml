@@ -1,0 +1,21 @@
+defaults:
+  - paths: default
+  - launcher: local
+  - _self_
+
+seed: 0
+split_seed: 0  # fixed train/validation partition across model seeds
+run_id: null
+run_tag: null
+
+total_epochs: 300
+run_final_test: true
+
+data_loader:
+  train_worker_count: 8
+  train_worker_buffer_size: 2
+
+wandb_entity: null
+wandb_name: null
+wandb_group: null
+wandb_mode: offline

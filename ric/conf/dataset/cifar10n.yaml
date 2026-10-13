@@ -1,0 +1,34 @@
+# CIFAR-10N dataset configuration (CIFAR-10 images + human noisy labels)
+
+name: cifar10n
+num_classes: 10
+image_size: 32
+
+train_test_split: 0.9
+
+# CIFAR-10 images are downloaded by TorchVision under this root.
+data_path: ${data_dir}
+download: true
+
+# Path to CIFAR-10N label file (from official CIFAR-10N release), e.g. CIFAR-10_human.pt.
+noise_labels_path: ${dataset.data_path}/CIFAR-10_human.pt
+# Label key in CIFAR-10_human.pt. Common options include:
+# clean_label, aggre_label, worse_label, random_label1, random_label2, random_label3
+noise_label_key: "aggre_label"
+
+dataset_fraction: 1.
+normalization: cifar
+augmentation: true
+
+# Training budget and resources for this dataset. Experiment presets read these
+# by interpolation, so one preset covers every dataset instead of one file each.
+supervised_epochs: 1000
+rl_policy_epochs: 400
+walltime_min:
+  rl: 300
+  sl: 120
+  edl: 120
+  adaptive: 120
+mem_gb: 32
+
+encoder_arch: cifarresnet34

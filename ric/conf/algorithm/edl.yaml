@@ -1,0 +1,12 @@
+defaults:
+  - supervised
+  - _self_
+
+activation: silu
+
+# alpha = exp(clipped logits) + alpha_offset + dirichlet_additive_epsilon
+evidence_logit_clip: 10.0
+alpha_offset: 1.0
+dirichlet_additive_epsilon: 0.0
+dirichlet_kl_weight: 1.0
+kl_annealing_epochs: 10

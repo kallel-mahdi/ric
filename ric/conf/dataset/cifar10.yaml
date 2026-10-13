@@ -1,0 +1,35 @@
+# CIFAR-10 dataset configuration (for quick testing)
+
+name: cifar10
+num_classes: 10
+image_size: 32
+
+
+train_test_split: 0.9  # split official training data into train/validation
+
+# Dataset paths
+data_path: ${data_dir}
+download: true
+
+# Dataset fraction: use only this fraction of the full dataset for faster training/testing
+dataset_fraction: 1.0
+
+# Normalization strategy for images
+normalization: cifar  # options: imagenet, cifar
+
+# Data augmentation (for trainable encoder)
+# Uses standard ResNet CIFAR-10 augmentation: RandomHorizontalFlip + RandomCrop(32, padding=4)
+augmentation: true
+
+# Training budget and resources for this dataset. Experiment presets read these
+# by interpolation, so one preset covers every dataset instead of one file each.
+supervised_epochs: 1000
+rl_policy_epochs: 400
+walltime_min:
+  rl: 300
+  sl: 120
+  edl: 120
+  adaptive: 120
+mem_gb: 32
+
+encoder_arch: cifarresnet34

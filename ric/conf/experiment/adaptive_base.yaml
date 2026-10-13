@@ -1,0 +1,16 @@
+# @package _global_
+# Shared recipe for the adaptive-computation baselines (Table 1).
+# ACT and PonderNet share the RIC refinement module and the supervised training
+# recipe; only the halting objective differs. PonderNet's geometric prior is
+# matched to the RIC discount (lambda_p = 1 - gamma = 0.2).
+total_epochs: ${dataset.supervised_epochs}
+# Hyperparameters that tell runs apart, so concurrent sweeps never share a checkpoint dir.
+run_tag: ${model.name}_${dataset.encoder_arch}_${algorithm.optimizer}_lr${algorithm.learning_rate}_${model.activation}_bs${algorithm.train_batch_size}_img${dataset.image_size}
+
+algorithm:
+  optimizer: adamw
+  learning_rate: 3.0e-4
+  weight_decay: 1.0e-4
+  grad_clip_norm: 0.5
+  train_batch_size: 256
+  eval_batch_size: 256

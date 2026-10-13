@@ -1,0 +1,8 @@
+defaults:
+  - base
+  - algorithm: edl
+  - dataset: cifar10
+  - _self_
+
+method: edl
+wandb_project: baseline-jax-edl

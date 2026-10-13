@@ -1,0 +1,18 @@
+# @package _global_
+# Submit through hydra-submitit-launcher. Partition/QOS are site-specific:
+#   ric-train -m +experiment=... launcher=slurm hydra.launcher.partition=gpu
+defaults:
+  - override /hydra/launcher: submitit_slurm
+
+hydra:
+  mode: MULTIRUN
+  launcher:
+    nodes: 1
+    gpus_per_node: 1
+    cpus_per_task: 8
+    timeout_min: ${dataset.walltime_min.${method}}
+    mem_gb: ${dataset.mem_gb}
+    max_num_timeout: 3
+  sweep:
+    dir: ${output_dir}/${hydra.job.name}/${now:%Y-%m-%d_%H-%M-%S}
+    subdir: ${dataset.name}/seed_${seed}

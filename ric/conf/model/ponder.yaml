@@ -1,0 +1,9 @@
+name: ponder
+
+activation: silu
+gru_hidden_size: auto
+max_steps: 10
+halt_bias: 0.0
+
+lambda_p: 0.2
+ponder_beta: 0.01

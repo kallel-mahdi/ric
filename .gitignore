@@ -1,0 +1,14 @@
+# Local environments and Python/build caches
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ruff_cache/
+build/
+dist/
+
+# Datasets, checkpoints, logs and local configuration
+/other/
+.env
+.env.*
+.DS_Store

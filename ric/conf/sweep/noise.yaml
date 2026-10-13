@@ -1,0 +1,11 @@
+# @package _global_
+# The two CIFAR-10N human-annotation settings the paper reports:
+# aggregated labels (9.03% noise) and worst-case labels (40.21%).
+#   ric-train -m +experiment=ric_spo '+sweep=[noise,paper]' dataset=cifar10n
+hydra:
+  mode: MULTIRUN
+  sweep:
+    subdir: ${dataset.name}/${dataset.noise_label_key}/seed_${seed}
+  sweeper:
+    params:
+      dataset.noise_label_key: aggre_label, worse_label

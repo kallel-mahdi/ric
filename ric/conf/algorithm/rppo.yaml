@@ -1,0 +1,30 @@
+network:
+  encoder_arch: ${dataset.encoder_arch}  # auto | cifarresnet18/34 | imagenetresnet18/34
+  activation: silu
+  gru_hidden_size: auto         # auto = encoder width (512)
+  compute_dtype: float32        # bfloat16 accelerates the encoder; paper numbers use float32
+  actor_head_type: dirichlet    # dirichlet | gaussian_logit (ablation)
+  c_bounds: auto                # Dirichlet concentration range; auto = [1, K]
+  dirichlet_additive_epsilon: 0.01
+  gauss_log_std_min: -20.0
+  gauss_log_std_max: 2.0
+  gauss_log_std_init: -2.0
+
+train_batch_size: 256
+eval_batch_size: 500
+T_max: 20
+gamma: 0.8
+gae_lambda: 0.5
+eval_value_stop_threshold: 0    # halt at the first t > 0 with V(s_t) < threshold
+
+training_epochs_per_policy: 5   # passes over the data per frozen pi_old snapshot
+train_scan_chunk_batches: 25    # batches per jitted scan call (largest device allocation)
+rollout_batch_group_size: 1     # independent frozen-policy batches; 4 is faster on CIFAR, uses more memory
+policy_loss: spo                # spo | ppo
+clip_coef: 0.2                  # SPO penalty scale epsilon / PPO clip range
+log_ratio_clip: 2.0             # SPO: log-ratio soft-clipped by c*tanh(x/c)
+value_coef: 0.5
+
+policy_lr: 3.0e-4
+weight_decay: 1.0e-4            # weight matrices only
+policy_grad_clip_norm: 0.5

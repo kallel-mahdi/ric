@@ -1,0 +1,23 @@
+# DermaMNIST: dermatoscopic lesion images, 7 diagnosis classes.
+# Official MedMNIST v3 split: 7,007 train / 1,003 val / 2,005 test.
+# Known caveat: images of the same lesion can cross official partitions.
+name: dermamnist
+num_classes: 7
+image_size: 64
+
+data_path: ${data_dir}
+download: true
+dataset_fraction: 1.0
+
+normalization: medmnist
+augmentation: true
+
+supervised_epochs: 300
+rl_policy_epochs: 400
+walltime_min:
+  rl: 480
+  sl: 120
+  edl: 120
+  adaptive: 120
+mem_gb: 32
+encoder_arch: cifarresnet34

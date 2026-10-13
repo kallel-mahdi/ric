@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+title: "Reinforced Iterative Classification (RIC)"
+message: "If you use this software, please cite the paper below."
+type: software
+abstract: >-
+  RIC formulates classification as a Markov decision process in which the action
+  is a full class distribution, the reward is the stepwise improvement in log
+  score, and a learned critic decides when refinement should stop. RIC-SPO trains
+  this framework with Simple Policy Optimization.
+license: Apache-2.0
+repository-code: "https://github.com/kallel-mahdi/ric"
+
+authors:
+  - given-names: Mahdi
+    family-names: Kallel
+  - given-names: Johannes
+    family-names: Tölle
+  - given-names: Ahmed
+    family-names: Hendawy
+  - given-names: Carlo
+    family-names: D'Eramo
+
+preferred-citation:
+  type: article
+  title: "Do Not Imitate, Reinforce: Iterative Classification via Belief Refinement"
+  year: 2026
+  journal: "Transactions on Machine Learning Research"
+  authors:
+    - given-names: Mahdi
+      family-names: Kallel
+    - given-names: Johannes
+      family-names: Tölle
+    - given-names: Ahmed
+      family-names: Hendawy
+    - given-names: Carlo
+      family-names: D'Eramo

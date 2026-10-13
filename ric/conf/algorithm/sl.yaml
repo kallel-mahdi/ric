@@ -1,0 +1,5 @@
+defaults:
+  - supervised
+  - _self_
+
+activation: silu

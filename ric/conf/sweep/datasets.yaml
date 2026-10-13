@@ -1,0 +1,7 @@
+# @package _global_
+# Every clean + noisy setting the paper reports, crossed with `sweep=paper`.
+hydra:
+  mode: MULTIRUN
+  sweeper:
+    params:
+      dataset: cifar10, svhn, imagewoof, galaxy10, organsmnist, tissuemnist, octmnist, dermamnist, pneumoniamnist

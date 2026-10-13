@@ -1,0 +1,8 @@
+defaults:
+  - base
+  - algorithm: sl
+  - dataset: cifar10
+  - _self_
+
+method: sl
+wandb_project: baseline-jax

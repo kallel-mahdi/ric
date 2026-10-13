@@ -1,0 +1,37 @@
+# Imagewoof dataset configuration (fastai subset of ImageNet)
+
+name: imagewoof
+num_classes: 10
+image_size: 224
+
+# fastai archive resolution: full, 320px, 160px
+fastai_size: 320px
+
+# Split train folder into train/val; official val folder is used as test.
+train_test_split: 0.9
+
+# Dataset root (archives are downloaded/extracted here)
+data_path: ${data_dir}
+download: true
+
+# Dataset fraction for quick experiments
+dataset_fraction: 1.0
+
+# Use ImageNet statistics for ImageNet subsets
+normalization: imagenet
+
+# Train-time augmentation
+augmentation: true
+
+# Training budget and resources for this dataset. Experiment presets read these
+# by interpolation, so one preset covers every dataset instead of one file each.
+supervised_epochs: 300
+rl_policy_epochs: 400
+walltime_min:
+  rl: 1440
+  sl: 360
+  edl: 360
+  adaptive: 360
+mem_gb: 64
+
+encoder_arch: imagenetresnet34

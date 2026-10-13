@@ -1,0 +1,22 @@
+# OrganSMNIST: sagittal abdominal CT slices, 11 organ classes.
+# Official MedMNIST v3 split: 13,932 train / 2,452 val / 8,827 test.
+name: organsmnist
+num_classes: 11
+image_size: 64
+
+data_path: ${data_dir}
+download: true
+dataset_fraction: 1.0
+
+normalization: medmnist
+augmentation: true
+
+supervised_epochs: 300
+rl_policy_epochs: 400
+walltime_min:
+  rl: 480
+  sl: 120
+  edl: 120
+  adaptive: 120
+mem_gb: 32
+encoder_arch: cifarresnet34

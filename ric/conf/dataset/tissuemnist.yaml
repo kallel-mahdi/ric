@@ -1,0 +1,22 @@
+# TissueMNIST: kidney cortex microscopy, 8 cell classes.
+# Official MedMNIST v3 split: 165,466 train / 23,640 val / 47,280 test.
+name: tissuemnist
+num_classes: 8
+image_size: 64
+
+data_path: ${data_dir}
+download: true
+dataset_fraction: 1.0
+
+normalization: medmnist
+augmentation: true
+
+supervised_epochs: 300
+rl_policy_epochs: 400
+walltime_min:
+  rl: 960
+  sl: 240
+  edl: 240
+  adaptive: 240
+mem_gb: 64
+encoder_arch: cifarresnet34

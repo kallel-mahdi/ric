@@ -1,0 +1,22 @@
+# OCTMNIST: retinal optical coherence tomography, 4 diagnosis classes.
+# Official MedMNIST v3 split: 97,477 train / 10,832 val / 1,000 test.
+name: octmnist
+num_classes: 4
+image_size: 64
+
+data_path: ${data_dir}
+download: true
+dataset_fraction: 1.0
+
+normalization: medmnist
+augmentation: true
+
+supervised_epochs: 300
+rl_policy_epochs: 400
+walltime_min:
+  rl: 720
+  sl: 180
+  edl: 180
+  adaptive: 180
+mem_gb: 48
+encoder_arch: cifarresnet34

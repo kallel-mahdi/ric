@@ -1,0 +1,4 @@
+# @package _global_
+data_dir: ${oc.env:RIC_DATASETS,other/data}
+checkpoint_dir: ${oc.env:RIC_CHECKPOINTS,other/checkpoints}
+output_dir: ${oc.env:RIC_OUTPUTS,other/outputs}

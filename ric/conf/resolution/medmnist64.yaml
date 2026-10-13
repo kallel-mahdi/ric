@@ -1,0 +1,8 @@
+# @package _global_
+# MedMNIST+ 64px robustness arm. Keep the official splits and use a CIFAR-stem
+# ResNet-34. Training augmentation is a padded random crop only: horizontal
+# flips would corrupt OrganSMNIST's left/right labels.
+dataset:
+  image_size: 64
+  augmentation: true
+  encoder_arch: cifarresnet34

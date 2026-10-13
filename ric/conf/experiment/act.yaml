@@ -1,0 +1,5 @@
+# @package _global_
+#   ric-train-adaptive -m +experiment=act +sweep=paper dataset=cifar10,svhn,imagewoof
+defaults:
+  - adaptive_base
+  - override /model: act

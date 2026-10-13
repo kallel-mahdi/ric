@@ -1,0 +1,51 @@
+name: CI
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+  JAX_PLATFORMS: cpu
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          python-version: "3.12"
+          enable-cache: true
+      - run: uv sync --locked
+      - run: uv run --locked ruff check ric
+      - run: uv run --locked ruff format --check --diff ric
+      - name: Console entrypoints
+        run: |
+          uv run --locked ric-train --help > /dev/null
+          uv run --locked ric-train-sl --help > /dev/null
+          uv run --locked ric-train-edl --help > /dev/null
+          uv run --locked ric-train-adaptive --help > /dev/null
+          uv run --locked ric-eval --help > /dev/null
+          uv run --locked ric-convert-galaxy10 --help > /dev/null
+      - run: uv build
+      - name: Wheel contains only the package and all its configs
+        run: |
+          uv run --locked python - <<'PY'
+          import pathlib
+          import zipfile
+          wheel = next(pathlib.Path("dist").glob("*.whl"))
+          with zipfile.ZipFile(wheel) as archive:
+              names = set(archive.namelist())
+          configs = {path.as_posix() for path in pathlib.Path("ric/conf").rglob("*.yaml")}
+          source = {path.as_posix() for path in pathlib.Path("ric").rglob("*.py")}
+          assert configs and configs <= names, f"missing configs: {configs - names}"
+          assert source <= names, f"missing source: {source - names}"
+          tops = {name.split("/")[0] for name in names}
+          assert all(name == "ric" or name.endswith(".dist-info") for name in tops), tops
+          PY

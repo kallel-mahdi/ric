@@ -1,0 +1,7 @@
+# @package _global_
+# The five seeds every table and figure in the paper averages over.
+hydra:
+  mode: MULTIRUN
+  sweeper:
+    params:
+      seed: 473075, 742340, 20096, 520801, 199345

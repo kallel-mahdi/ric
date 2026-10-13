@@ -1,0 +1,13 @@
+defaults:
+  - base
+  - algorithm: rppo
+  - dataset: cifar10
+  - _self_
+
+method: rl
+total_epochs: 400  # each policy epoch contains training_epochs_per_policy data passes
+wandb_project: ric
+
+evaluation:
+  policy_mode: stochastic  # stochastic sampled rollouts or deterministic policy mean
+  passes: 10

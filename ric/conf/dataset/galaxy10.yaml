@@ -1,0 +1,31 @@
+# Galaxy10 DECaLS: 17,736 galaxy images, 10 morphology classes from Galaxy Zoo votes.
+# Extracted once from Galaxy10_DECals_NoDuplicated.h5. A schema-v2 manifest under
+# data_path/galaxy10 fixes disjoint stratified train/validation/test membership.
+
+name: galaxy10
+num_classes: 10
+image_size: 128
+
+# Ten percent is held out for test, then ten percent of the remainder for validation.
+train_test_split: 0.9
+
+data_path: ${data_dir}
+
+dataset_fraction: 1.0
+
+normalization: galaxy10
+
+augmentation: true
+
+# Training budget and resources for this dataset. Experiment presets read these
+# by interpolation, so one preset covers every dataset instead of one file each.
+supervised_epochs: 300
+rl_policy_epochs: 400
+walltime_min:
+  rl: 480
+  sl: 120
+  edl: 120
+  adaptive: 120
+mem_gb: 64
+
+encoder_arch: imagenetresnet34

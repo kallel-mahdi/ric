@@ -1,0 +1,15 @@
+# @package _global_
+# Fixed-concentration-cap hidden-size ablation for MedMNIST.
+defaults:
+  - ric_spo
+
+run_tag: rppo_spo_cmax10_hidden${algorithm.network.gru_hidden_size}
+
+evaluation:
+  policy_mode: deterministic
+  passes: 1
+
+algorithm:
+  network:
+    c_bounds: [1, 10]
+    dirichlet_additive_epsilon: 0.01

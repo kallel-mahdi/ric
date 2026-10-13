@@ -1,0 +1,5 @@
+# @package _global_
+# RIC-SPO (ours), the recipe behind the paper's tables:
+#   ric-train -m +experiment=ric_spo +sweep=paper dataset=cifar10,svhn,imagewoof
+total_epochs: ${dataset.rl_policy_epochs}
+run_tag: rppo_spo_adamw_lr3e-4_bs256_silu_wd1e-4_clip0p5_pol400x5_eval10

@@ -1,0 +1,9 @@
+defaults:
+  - base
+  - algorithm: supervised
+  - dataset: cifar10
+  - model: act
+  - _self_
+
+method: adaptive
+wandb_project: baseline-jax-adaptive

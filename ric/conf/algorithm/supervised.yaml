@@ -1,0 +1,8 @@
+optimizer: adamw  # adamw or sgd_paper
+train_batch_size: 256
+eval_batch_size: 256
+train_scan_chunk_batches: 25
+
+learning_rate: 3.0e-4
+weight_decay: 1.0e-4
+grad_clip_norm: 0.5
