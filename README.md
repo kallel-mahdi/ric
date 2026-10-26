@@ -44,8 +44,6 @@ the selected checkpoints on the test split; to score a saved run again:
 ric-eval --checkpoint-dir <run> --selector nll
 ```
 
-The [usage guide](docs/usage.md) covers dataset preparation, sweeps, cluster runs and evaluation options.
-
 ## Citation
 
 ```bibtex
